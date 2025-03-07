@@ -9,7 +9,7 @@
   <a href="http://github.com/venky0103"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"></a>
 </p>
 
-I'm passionate about __Full-Stack Development__, __Cloud Computing__, and __Software Engineering__. I enjoy developing applications that enhance user experience and contribute to efficient solutions.
+I'm a **Software Engineer**, passionate about **Full-Stack Development**, **Cloud Computing**, and **Software Engineering**. I love building **scalable applications**, **optimizing performance**, and working with **cutting-edge technologies** to create seamless user experiences.
 
 ---
 
@@ -20,8 +20,8 @@ I'm passionate about __Full-Stack Development__, __Cloud Computing__, and __Soft
 </p>
 
 - **Master of Science in Information Systems** - *Northeastern University, San Jose, CA, USA* _(Aug 2023 - Present)_
-  - GPA: 3.9/4.0
-  - Coursework: Data Structures and Algorithms, Mobile Application Development, Web Design, Web Development Tools and Methods, Large Language Models
+  - **GPA:** 3.9/4.0
+  - **Coursework:** Data Structures and Algorithms, Mobile Application Development, Web Design, Web Development Tools and Methods, Large Language Models
 - **Bachelor of Technology in Information Technology** - *Anna University, Chennai, India* _(Apr 2023)_
 
 ---
@@ -64,6 +64,22 @@ I'm passionate about __Full-Stack Development__, __Cloud Computing__, and __Soft
 
 ---
 
+## 🌟 Featured Projects
+
+### **FlexiDrop - RideShare Application**
+- Developed a full-stack **ride-sharing application** with **real-time package tracking**.
+- Integrated **dynamic routing optimization** to reduce fuel costs and **improve travel efficiency**.
+- Built a **smooth authentication system** using **Clerk**.
+- Technologies: **React.js, Tailwind CSS, Firebase, Next.js, AWS Lambda**
+
+### **FlexiAuto - Online Car Marketplace**
+- Created an online **marketplace for car sales** with **fraud prevention mechanisms**.
+- Implemented **filtering options** for distinguishing between **salvage** and **clean-title vehicles**.
+- Designed a responsive frontend using **React.js and Tailwind CSS**.
+- Technologies: **Node.js, Express.js, MongoDB, Clerk, AWS**
+
+---
+
 ## 📄 My Resume
 
 📄 [Download Resume](https://github.com/venky0103/Resume/blob/main/Venkatesh_Resume.pdf)
@@ -80,4 +96,4 @@ I'm passionate about __Full-Stack Development__, __Cloud Computing__, and __Soft
 
 ---
 
-Feel free to connect with me for collaboration, discussions, or just to say hi! 😃
+🚀 Always open for **collaborations** and **exciting discussions**! Feel free to reach out! 😃
