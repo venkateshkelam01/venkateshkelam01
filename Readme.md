@@ -28,6 +28,10 @@ I'm passionate about __Full-Stack Development__, __Cloud Computing__, and __Soft
 
 ## 🛠 Technologies & Tools
 
+<p align="center">
+  <img src="https://github.com/suhasmaddali/Images/blob/main/Text%20Generated.gif" width="600" />
+</p>
+
 ### **Programming Languages:**
 <p align="center">
   <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
