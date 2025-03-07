@@ -1,6 +1,13 @@
 <h1 align="center">Hi there, I'm Venkatesh Kelam 👋</h1>
 
-[![](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/venky0103) [![](https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white)](http://github.com/venky0103)
+<p align="center">
+  <img src="https://github.com/suhasmaddali/GIF-files/blob/main/animat-campfire-color.gif" width="75" />
+</p>
+
+<p align="center">
+  <a href="https://www.linkedin.com/in/venky0103"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+  <a href="http://github.com/venky0103"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"></a>
+</p>
 
 I'm passionate about __Full-Stack Development__, __Cloud Computing__, and __Software Engineering__. I enjoy developing applications that enhance user experience and contribute to efficient solutions.
 
@@ -15,73 +22,37 @@ I'm passionate about __Full-Stack Development__, __Cloud Computing__, and __Soft
 
 ---
 
-## 🛠 Skills
+## 🛠 Technologies & Tools
 
-### Programming Languages:
-- Java, Python, JavaScript (ES6+), TypeScript
+### **Programming Languages:**
+<p align="center">
+  <img src="https://img.shields.io/badge/Java-ED8B00?style=for-the-badge&logo=java&logoColor=white" />
+  <img src="https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white" />
+  <img src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/TypeScript-007ACC?style=for-the-badge&logo=typescript&logoColor=white" />
+</p>
 
-### Frontend:
-- React.js, Next.js, HTML5, CSS3, Tailwind CSS
+### **Frontend Technologies:**
+<p align="center">
+  <img src="https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react&logoColor=61DAFB" />
+  <img src="https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white" />
+  <img src="https://img.shields.io/badge/TailwindCSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" />
+</p>
 
-### Backend:
-- Node.js, Express.js, Spring Boot, RESTful APIs
+### **Backend Technologies:**
+<p align="center">
+  <img src="https://img.shields.io/badge/Node.js-43853D?style=for-the-badge&logo=node.js&logoColor=white" />
+  <img src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" />
+  <img src="https://img.shields.io/badge/Spring%20Boot-6DB33F?style=for-the-badge&logo=spring&logoColor=white" />
+</p>
 
-### Authentication & Security:
-- OAuth, Clerk
-
-### Cloud & DevOps:
-- AWS (EC2, S3, DynamoDB, CloudWatch), Terraform, CloudFormation
-
-### CI/CD & Containers:
-- Docker, Kubernetes
-
-### Databases:
-- MySQL, PostgreSQL, MongoDB, DynamoDB
-
-### Version Control & Automation:
-- Git, GitHub
-
-### Real-Time & Event-Driven Services:
-- Socket.io
-
-### Certification:
-- AWS Certified Solutions Architect – Associate
-
----
-
-## 💼 Professional Experience
-
-### **Software Engineer Intern** | Ipser Labs _(Feb 2025 - Present)_
-- Developed a React-based real estate platform (Dhorobha) for buying, selling, and renting properties, incorporating secure authentication and user management features.
-- Designed and implemented the entire page flow, ensuring seamless navigation and intuitive user experience.
-- Integrated Google Maps API for real-time property location visualization and enhanced user interaction.
-- Collaborated with the team to define key features, optimize performance, and ensure mobile responsiveness.
-- Worked on backend integration with Java, ensuring smooth data flow and efficient property listings management.
-
-### **Front-End Developer Intern** | Unique Solutions _(April 2022 - August 2022)_
-- Gained hands-on experience in JavaScript, HTML, and CSS, focusing on front-end development best practices.
-- Explored fundamental backend concepts and implemented minimal server-side coding for web applications.
-- Developed a functional website, enhancing understanding of web development workflows.
-- Strengthened problem-solving abilities by working on real-world coding challenges.
-- Improved understanding of UI/UX principles and responsive design while working on front-end projects.
-
----
-
-## 🚀 Projects
-
-### **FlexiDrop - RideShare Application** _(January 2025 - Present)_
-- Developing a full-stack package delivery and ride-share application using React for the frontend and backend integration.
-- Implemented a simple animation displaying the project name on the get-started page for enhanced user engagement.
-- Ensuring seamless user experience with optimized UI components using Tailwind CSS and ShadCN UI.
-- Building secure authentication and real-time tracking functionalities for efficient deliveries.
-- Designed and implemented an **intelligent route optimization system** to minimize travel time and fuel costs for ride-sharing.
-- Integrated **real-time notifications** and **payment processing**, ensuring a smooth and reliable transaction experience for users.
-
-### **FlexiAuto - Online Car Marketplace** _(September 2024 - October 2024)_
-- Developed a full-stack marketplace for buying and selling cars, enhancing user experience with filtering options to distinguish between salvage title and clean title vehicles.
-- Implemented fraud prevention mechanisms by collecting detailed car information and preventing duplicate listings of the same vehicle.
-- Designed and built the frontend using React.js and Tailwind CSS, ensuring a responsive and intuitive user interface.
-- Developed a scalable backend with Node.js and Express.js, managing car listings, user authentication (using Clerk), and secure data storage in MongoDB.
+### **Cloud & DevOps:**
+<p align="center">
+  <img src="https://img.shields.io/badge/AWS-FF9900?style=for-the-badge&logo=amazon-aws&logoColor=white" />
+  <img src="https://img.shields.io/badge/Terraform-623CE4?style=for-the-badge&logo=terraform&logoColor=white" />
+  <img src="https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white" />
+  <img src="https://img.shields.io/badge/Kubernetes-326CE5?style=for-the-badge&logo=kubernetes&logoColor=white" />
+</p>
 
 ---
 
