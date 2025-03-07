@@ -15,6 +15,10 @@ I'm passionate about __Full-Stack Development__, __Cloud Computing__, and __Soft
 
 ## 🎓 Education
 
+<p align="center">
+  <img src="https://github.com/suhasmaddali/GIF-files/blob/main/education%20gif.gif" width="750" />
+</p>
+
 - **Master of Science in Information Systems** - *Northeastern University, San Jose, CA, USA* _(Aug 2023 - Present)_
   - GPA: 3.9/4.0
   - Coursework: Data Structures and Algorithms, Mobile Application Development, Web Design, Web Development Tools and Methods, Large Language Models
