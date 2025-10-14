@@ -5,8 +5,8 @@
 </p>
 
 <p align="center">
-  <a href="https://www.linkedin.com/in/venky0103"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
-  <a href="http://github.com/venky0103"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"></a>
+  <a href="https://www.linkedin.com/in/venkatesh0101"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+  <a href="http://github.com/venkateshkelam01"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"></a>
 </p>
 
 I'm a **Software Engineer**, passionate about **Full-Stack Development**, **Cloud Computing**, and **Software Engineering**. I love building **scalable applications**, **optimizing performance**, and working with **cutting-edge technologies** to create seamless user experiences.
@@ -82,7 +82,7 @@ I'm a **Software Engineer**, passionate about **Full-Stack Development**, **Clou
 
 ## 📄 My Resume
 
-📄 [Download Resume](https://github.com/venky0103/Resume/blob/main/Venkatesh_Resume.pdf)
+📄 [Download Resume](https://github.com/venkateshkelam01/Resume/blob/main/Venkatesh_Resume.pdf)
 
 ---
 
@@ -90,9 +90,9 @@ I'm a **Software Engineer**, passionate about **Full-Stack Development**, **Clou
 
 📧 Email: [venkateshkelam01@gmail.com](mailto:venkateshkelam01@gmail.com)
 
-📘 LinkedIn: [linkedin.com/in/venky0103](https://www.linkedin.com/in/venky0103)
+📘 LinkedIn: [linkedin.com/in/venky0103](https://www.linkedin.com/in/venkatesh0101)
 
-🐱 GitHub: [github.com/venky0103](http://github.com/venky0103)
+🐱 GitHub: [github.com/venky0103](http://github.com/venkateshkelamk01)
 
 ---
 
