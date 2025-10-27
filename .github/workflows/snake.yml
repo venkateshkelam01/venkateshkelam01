@@ -1,7 +1,8 @@
 name: GitHub Snake Game 🐍
 
+# Allow the workflow token to push (fixes 403 on first publish)
 permissions:
-  contents: write    # allow pushes to output branch
+  contents: write
 
 on:
   schedule:
@@ -19,14 +20,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: false
-          fetch-depth: 0
-
-      # ✅ New step — clean up generated files before switching branches
-      - name: Remove untracked dist files
-        run: |
-          echo "Cleaning up old generated files..."
-          rm -f dist/github-snake-dark.svg dist/github-snake.svg dist/ocean.gif || true
+          persist-credentials: false   # we'll auth pushes manually
+          fetch-depth: 0               # needed for branch ops
 
       - name: Generate Snake animations (SVG + Dark + Blue GIF)
         uses: Platane/snk@v3
@@ -35,9 +30,18 @@ jobs:
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
+            # Blue snake + blue gradient dots
             dist/ocean.gif?color_snake=#1E90FF&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      # 🔧 Fix: clean the generated artifacts so checkout to 'output' won't fail
+      - name: Clean generated artifacts that block checkout
+        run: |
+          echo "Removing dist artifacts that would be overwritten by checkout..."
+          rm -f dist/github-snake-dark.svg dist/github-snake.svg dist/ocean.gif || true
+          # Or: remove everything if you prefer
+          # rm -rf dist/* || true
 
       - name: Deploy to `output` branch
         env:
@@ -52,17 +56,15 @@ jobs:
 
           REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git"
 
-          # Create or switch to output branch
+          # Create/switch to output branch robustly
           if git ls-remote --exit-code --heads "$REMOTE" "$BRANCH" > /dev/null 2>&1; then
-            echo "Fetching and switching to existing branch: $BRANCH"
             git fetch "$REMOTE" "$BRANCH":"$BRANCH"
             git checkout "$BRANCH"
           else
-            echo "Creating new orphan branch: $BRANCH"
             git checkout --orphan "$BRANCH"
           fi
 
-          # Clean current branch and copy fresh files
+          # Clean and copy fresh artifacts
           git rm -rf . > /dev/null 2>&1 || true
           cp -R "${BUILD_DIR}/." .
           touch .nojekyll
