@@ -111,9 +111,11 @@ I love building <b>scalable systems</b>, <b>optimizing performance</b>, and work
 
 ## 📫 Connect With Me
 
-📧 **Email:** [venkateshkelam01@gmail.com](mailto:venkateshkelam01@gmail.com)  
-💼 **LinkedIn:** [linkedin.com/in/venkatesh0101](https://www.linkedin.com/in/venkatesh0101)  
-🐙 **GitHub:** [github.com/venkateshkelam01](https://github.com/venkateshkelam01)
+<p align="center">
+  <a href="https://www.linkedin.com/in/venkatesh0101"><img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white"></a>
+  <a href="https://github.com/venkateshkelam01"><img src="https://img.shields.io/badge/GitHub-181717?style=for-the-badge&logo=github&logoColor=white"></a>
+  <a href="mailto:venkateshkelam01@gmail.com"><img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white"></a>
+</p>
 
 ---
 
