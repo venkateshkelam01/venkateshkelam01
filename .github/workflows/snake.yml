@@ -1,17 +1,15 @@
 name: GitHub Snake Game 🐍
 
+# Give the workflow token push rights (fixes 403 on first publish)
+permissions:
+  contents: write
+
 on:
-  # Run automatically every day at midnight UTC
   schedule:
-    - cron: "0 0 * * *"
-
-  # Allow manual trigger
-  workflow_dispatch:
-
-  # Also regenerate whenever you push to main
+    - cron: "0 0 * * *"           # run daily at 00:00 UTC
+  workflow_dispatch:               # allow manual runs
   push:
-    branches:
-      - main
+    branches: [ main ]             # regenerate when README updates
 
 jobs:
   generate:
@@ -19,15 +17,16 @@ jobs:
     timeout-minutes: 10
 
     steps:
-      # Step 1: Checkout repository
-      - name: Checkout Repository
+      - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: false   # we'll set the remote with the token manually
+          fetch-depth: 0               # we need history for branch ops
 
-      # Step 2: Generate Snake animation (SVG + dark variant + GIF)
-      - name: Generate Snake Animations
+      - name: Generate Snake animations (SVG + Dark + GIF)
         uses: Platane/snk@v3
         with:
-          github_user_name: venkateshkelam01   # 👈 your GitHub username
+          github_user_name: venkateshkelam01
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
@@ -35,11 +34,39 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # Step 3: Deploy generated files to output branch
-      - name: Deploy to Output Branch
-        uses: peaceiris/actions-gh-pages@v3
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          publish_branch: output
-          commit_message: "🐍 Update contribution snake animation [skip ci]"
+      - name: Deploy to `output` branch
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          REPO: ${{ github.repository }}
+          BRANCH: output
+          BUILD_DIR: dist
+        run: |
+          set -euo pipefail
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+
+          # Use token-authenticated remote
+          REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git"
+
+          # Does remote branch exist?
+          if git ls-remote --exit-code --heads "$REMOTE" "$BRANCH" > /dev/null 2>&1; then
+            # Fetch & switch to it
+            git fetch "$REMOTE" "$BRANCH":"$BRANCH"
+            git checkout "$BRANCH"
+          else
+            # First publish: create orphan branch
+            git checkout --orphan "$BRANCH"
+          fi
+
+          # Clean branch contents and copy freshly generated files
+          # (We are on 'output' branch now; safe to remove everything)
+          git rm -rf . > /dev/null 2>&1 || true
+          mkdir -p .
+          cp -R "${BUILD_DIR}/." .
+
+          # Prevent Jekyll from mangling files if ever served via Pages
+          touch .nojekyll
+
+          git add -A
+          git commit -m "🐍 Update contribution snake animation" || echo "No changes to commit"
+          git push -f "$REMOTE" "$BRANCH"
