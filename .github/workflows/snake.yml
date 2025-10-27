@@ -1,6 +1,6 @@
 name: GitHub Snake Game 🐍
 
-# Let the workflow token push to the repo (fixes first-time publish/403)
+# Give the workflow token push rights (fixes 403 on first publish)
 permissions:
   contents: write
 
@@ -20,8 +20,8 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: false   # we'll authenticate pushes ourselves
-          fetch-depth: 0               # needed for branch operations
+          persist-credentials: false   # we'll set the remote with the token manually
+          fetch-depth: 0               # we need history for branch ops
 
       - name: Generate Snake animations (SVG + Dark + Blue GIF)
         uses: Platane/snk@v3
@@ -30,7 +30,7 @@ jobs:
           outputs: |
             dist/github-snake.svg
             dist/github-snake-dark.svg?palette=github-dark
-            # Blue snake + blue contribution dot palette
+            # Blue snake + blue gradient dots
             dist/ocean.gif?color_snake=#1E90FF&color_dots=#bfd6f6,#8dbdff,#64a1f4,#4b91f1,#3c7dd9
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
@@ -46,19 +46,25 @@ jobs:
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
+          # Use token-authenticated remote
           REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git"
 
-          # Create/switch to output branch robustly
+          # Does remote branch exist?
           if git ls-remote --exit-code --heads "$REMOTE" "$BRANCH" > /dev/null 2>&1; then
+            # Fetch & switch to it
             git fetch "$REMOTE" "$BRANCH":"$BRANCH"
             git checkout "$BRANCH"
           else
+            # First publish: create orphan branch
             git checkout --orphan "$BRANCH"
           fi
 
-          # Clean and copy fresh artifacts
+          # Clean branch contents and copy freshly generated files
           git rm -rf . > /dev/null 2>&1 || true
+          mkdir -p .
           cp -R "${BUILD_DIR}/." .
+
+          # Prevent Jekyll from mangling files if ever served via Pages
           touch .nojekyll
 
           git add -A
