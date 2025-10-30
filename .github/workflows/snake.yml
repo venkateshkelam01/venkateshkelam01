@@ -3,6 +3,8 @@ name: GitHub Snake Game 🐍
 # Allow the workflow token to push (fixes 403 on first publish)
 permissions:
   contents: write
+  discussions: write
+  pull-requests: write
 
 on:
   schedule:
@@ -35,13 +37,12 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # 🔧 Fix: clean the generated artifacts so checkout to 'output' won't fail
-      - name: Clean generated artifacts that block checkout
+      # 🔧 Fix: ensure dist directory exists and clean artifacts
+      - name: Prepare dist directory
         run: |
-          echo "Removing dist artifacts that would be overwritten by checkout..."
+          mkdir -p dist
+          echo "Removing any existing artifacts..."
           rm -f dist/github-snake-dark.svg dist/github-snake.svg dist/ocean.gif || true
-          # Or: remove everything if you prefer
-          # rm -rf dist/* || true
 
       - name: Deploy to `output` branch
         env:
