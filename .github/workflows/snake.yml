@@ -57,10 +57,14 @@ jobs:
 
           REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git"
 
+          # Clean up any existing files in dist directory before branch operations
+          echo "Cleaning up dist directory..."
+          rm -rf dist/* || true
+
           # Create/switch to output branch robustly
           if git ls-remote --exit-code --heads "$REMOTE" "$BRANCH" > /dev/null 2>&1; then
             git fetch "$REMOTE" "$BRANCH":"$BRANCH"
-            git checkout "$BRANCH"
+            git checkout -f "$BRANCH"  # Use force checkout to avoid untracked files issues
           else
             git checkout --orphan "$BRANCH"
           fi
