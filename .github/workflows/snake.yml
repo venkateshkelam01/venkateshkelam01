@@ -37,12 +37,16 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # 🔧 Fix: ensure dist directory exists and clean artifacts
-      - name: Prepare dist directory
+      # 🔧 Fix: ensure dist directory exists and fix permissions
+      - name: Prepare dist directory and fix permissions
         run: |
           mkdir -p dist
-          echo "Removing any existing artifacts..."
-          rm -f dist/github-snake-dark.svg dist/github-snake.svg dist/ocean.gif || true
+          # Fix permissions
+          sudo chown -R $USER:$USER dist/
+          chmod -R u+w dist/
+          # Clean up existing files
+          git clean -fdx dist/ || true
+          rm -rf dist/* || true
 
       - name: Deploy to `output` branch
         env:
@@ -57,8 +61,11 @@ jobs:
 
           REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git"
 
-          # Clean up any existing files in dist directory before branch operations
-          echo "Cleaning up dist directory..."
+          # Fix permissions and clean up dist directory before branch operations
+          echo "Fixing permissions and cleaning up dist directory..."
+          sudo chown -R $USER:$USER dist/
+          chmod -R u+w dist/
+          git clean -fdx dist/ || true
           rm -rf dist/* || true
 
           # Create/switch to output branch robustly
