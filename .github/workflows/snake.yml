@@ -1,5 +1,3 @@
-name: GitHub Snake Game 🐍
-
 # Allow the workflow token to push (fixes 403 on first publish)
 permissions:
   contents: write
@@ -19,13 +17,15 @@ jobs:
     timeout-minutes: 10
 
     steps:
+      # 🧩 1. Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
         with:
-          persist-credentials: false   # we'll auth pushes manually
-          fetch-depth: 0               # needed for branch ops
+          persist-credentials: false
+          fetch-depth: 0
 
-      - name: Generate Snake animations (SVG + Dark + Blue GIF)
+      # 🐍 2. Generate Snake animations (SVG + Dark + Blue GIF)
+      - name: Generate Snake animations
         uses: Platane/snk@v3
         with:
           github_user_name: venkateshkelam01
@@ -37,18 +37,18 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
-      # 🔧 Fix: ensure dist directory exists and fix permissions
-      - name: Prepare dist directory and fix permissions
+      # 🔍 3. Debug check — confirm files were generated
+      - name: Verify generated files
         run: |
-          mkdir -p dist
-          # Fix permissions
-          sudo chown -R $USER:$USER dist/
-          chmod -R u+w dist/
-          # Clean up existing files
-          git clean -fdx dist/ || true
-          rm -rf dist/* || true
+          echo "Checking generated files..."
+          if [ -d dist ]; then
+            ls -R dist
+          else
+            echo "⚠️ dist directory not found! Snake generation may have failed."
+          fi
 
-      - name: Deploy to `output` branch
+      # 🚀 4. Deploy generated files to ⁠ output ⁠ branch
+      - name: Deploy to ⁠ output ⁠ branch
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           REPO: ${{ github.repository }}
@@ -56,31 +56,35 @@ jobs:
           BUILD_DIR: dist
         run: |
           set -euo pipefail
+          echo "Preparing dist directory..."
+          mkdir -p "${BUILD_DIR}"
+          sudo chown -R $USER:$USER "${BUILD_DIR}" || true
+          chmod -R u+w "${BUILD_DIR}" || true
+
           git config user.name  "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-
           REMOTE="https://x-access-token:${GITHUB_TOKEN}@github.com/${REPO}.git"
 
-          # Fix permissions and clean up dist directory before branch operations
-          echo "Fixing permissions and cleaning up dist directory..."
-          sudo chown -R $USER:$USER dist/
-          chmod -R u+w dist/
-          git clean -fdx dist/ || true
-          rm -rf dist/* || true
-
-          # Create/switch to output branch robustly
+          echo "Switching to or creating ${BRANCH} branch..."
           if git ls-remote --exit-code --heads "$REMOTE" "$BRANCH" > /dev/null 2>&1; then
             git fetch "$REMOTE" "$BRANCH":"$BRANCH"
-            git checkout -f "$BRANCH"  # Use force checkout to avoid untracked files issues
+            git checkout -f "$BRANCH"
           else
             git checkout --orphan "$BRANCH"
           fi
 
-          # Clean and copy fresh artifacts
+          echo "Cleaning old files..."
           git rm -rf . > /dev/null 2>&1 || true
+
+          echo "Copying new build from ${BUILD_DIR}..."
           cp -R "${BUILD_DIR}/." .
           touch .nojekyll
 
+          echo "Committing and pushing..."
           git add -A
           git commit -m "🐍 Update contribution snake animation (blue theme)" || echo "No changes to commit"
           git push -f "$REMOTE" "$BRANCH"
+
+      # ✅ 5. Confirm completion
+      - name: Done
+        run: echo "🎉 Snake animation generation and deployment complete!"
